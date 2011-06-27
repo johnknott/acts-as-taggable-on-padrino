@@ -1,5 +1,7 @@
 = ActsAsTaggableOn
 
+This is a Padrino version of Ben Woosley's version of the below:
+
 This plugin was originally based on Acts as Taggable on Steroids by Jonathan Viney.
 It has evolved substantially since that point, but all credit goes to him for the
 initial tagging functionality that so many people have used.
@@ -15,36 +17,22 @@ was used.
 
 == Installation
 
-==== Plugin
+1) Add it to your Gemfile:
+gem 'acts-as-taggable-on-padrino'
 
-Acts As Taggable On is available both as a gem and as a traditional plugin. For the
-traditional plugin you can install like so:
-
-  script/plugin install git://github.com/mbleigh/acts-as-taggable-on.git
-
-==== Post Installation
-
-1. script/generate acts_as_taggable_on_migration
-2. rake db:migrate
-
-=== Rails 3.0
-
-Acts As Taggable On is now useable in Rails 3.0, thanks to the excellent work of Szymon Nowak
-and Jelle Vandebeeck.
-
-To use it, add it to your Gemfile:
-  
-  gem 'acts-as-taggable-on'
+2) Install it with bundler
+bundle install
 
 ==== Post Installation
 
-1. rails generate acts_as_taggable_on:migration
-2. rake db:migrate
+From the root of your Padrino App:
+1. padrino g acts_as_taggable_on_migration
+2. padrino rake ar:migrate
 
 == Testing
 
 Acts As Taggable On uses RSpec for its test coverage. Inside the plugin
-directory, you can run the specs for RoR 3.0.0 with:
+directory, you can run the specs with:
 
   rake spec
 
