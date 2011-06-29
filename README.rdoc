@@ -26,7 +26,7 @@ bundle install
 ==== Post Installation
 
 From the root of your Padrino App:
-1. padrino g acts_as_taggable_on_migration
+1. padrino rake taggable:create_migration
 2. padrino rake ar:migrate
 
 == Testing

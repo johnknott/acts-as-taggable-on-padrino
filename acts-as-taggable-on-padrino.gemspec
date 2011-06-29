@@ -8,10 +8,10 @@ Gem::Specification.new do |s|
   s.version = "2.0.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Michael Bleigh"]
+  s.authors = ["Michael Bleigh", "John Knott"]
   s.date = %q{2011-06-29}
   s.description = %q{With ActsAsTaggableOnPadrino, you could tag a single model on several contexts, such as skills, interests, and awards. It also provides other advanced functionality.}
-  s.email = %q{michael@intridea.com}
+  s.email = %q{john.knott@gmail.com}
   s.extra_rdoc_files = [
     "README.rdoc"
   ]
@@ -24,8 +24,6 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "acts-as-taggable-on-padrino.gemspec",
-    "generators/acts_as_taggable_on_migration/acts_as_taggable_on_migration_generator.rb",
-    "generators/acts_as_taggable_on_migration/templates/migration.rb",
     "lib/acts-as-taggable-on-padrino.rb",
     "lib/acts_as_taggable_on_padrino/tag.rb",
     "lib/acts_as_taggable_on_padrino/taggable.rb",
@@ -38,8 +36,8 @@ Gem::Specification.new do |s|
     "lib/acts_as_taggable_on_padrino/tagger.rb",
     "lib/acts_as_taggable_on_padrino/tagging.rb",
     "lib/acts_as_taggable_on_padrino/tags_helper.rb",
-    "lib/generators/acts_as_taggable_on/migration/migration_generator.rb",
-    "lib/generators/acts_as_taggable_on/migration/templates/active_record/migration.rb",
+    "lib/tasks/generate_migration.rb",
+    "lib/tasks/templates/migration.rb",
     "spec/acts_as_taggable_on_padrino/acts_as_taggable_on_spec.rb",
     "spec/acts_as_taggable_on_padrino/acts_as_tagger_spec.rb",
     "spec/acts_as_taggable_on_padrino/tag_list_spec.rb",
@@ -55,7 +53,7 @@ Gem::Specification.new do |s|
     "spec/spec_helper.rb",
     "uninstall.rb"
   ]
-  s.homepage = %q{http://github.com/mbleigh/acts-as-taggable-on}
+  s.homepage = %q{http://github.com/johnknott/acts-as-taggable-on-padrino}
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.6.2}
   s.summary = %q{ActsAsTaggableOnPadrino is a tagging plugin for Padrino that provides multiple tagging contexts on a single model.}

@@ -33,3 +33,9 @@ module ActsAsTaggableOn
   end
   module_function :like_operator
 end
+
+begin
+  require 'padrino-gen'
+  Padrino::Tasks.files << Dir[File.dirname(__FILE__) + "/tasks/**/*.rb"]
+rescue LoadError
+end
