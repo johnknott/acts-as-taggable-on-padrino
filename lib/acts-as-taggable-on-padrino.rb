@@ -23,8 +23,8 @@ ActiveRecord::Base.extend ActsAsTaggableOn::Tagger
 ActiveRecord::Base.extend ActsAsTaggableOn::Tag
 ActiveRecord::Base.extend ActsAsTaggableOn::Tagging
 
-if defined?(ActionView::Base)
-  ActionView::Base.send :include, ActsAsTaggableOn::TagsHelper
+if defined?(Padrino::Helpers::TagHelpers)
+  Padrino::Helpers::TagHelpers.send :include, ActsAsTaggableOn::TagsHelper
 end
 
 module ActsAsTaggableOn
