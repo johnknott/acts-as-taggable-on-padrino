@@ -22,7 +22,7 @@ begin
   Jeweler::Tasks.new do |gemspec|
     gemspec.name = "acts-as-taggable-on-padrino"
     gemspec.summary = "ActsAsTaggableOnPadrino is a tagging plugin for Padrino that provides multiple tagging contexts on a single model."
-    gemspec.description = "With ActsAsTaggableOnPadrino, you could tag a single model on several contexts, such as skills, interests, and awards. It also provides other advanced functionality."
+    gemspec.description = "Padrino version of the popular Rails tagging plugin. With ActsAsTaggableOnPadrino, you could tag a single model on several contexts, such as skills, interests, and awards. It also provides other advanced functionality."
     gemspec.email = "john.knott@gmail.com"
     gemspec.homepage = "http://github.com/johnknott/acts-as-taggable-on-padrino"
     gemspec.authors = ["Michael Bleigh","John Knott"]
