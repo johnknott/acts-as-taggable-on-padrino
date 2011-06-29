@@ -84,7 +84,7 @@ describe "acts_as_tagger" do
       before(:each) do
         @user_x = TaggableUser.create(:name => "User X")
         @user_y = TaggableUser.create(:name => "User Y")
-        @taggable = TaggableModel.create(:name => 'acts_as_taggable_on', :tag_list => 'plugin')
+        @taggable = TaggableModel.create(:name => 'acts_as_taggable_on_padrino', :tag_list => 'plugin')
         
         @user_x.tag(@taggable, :with => 'ruby, rails',  :on => :tags)
         @user_y.tag(@taggable, :with => 'ruby, plugin', :on => :tags)

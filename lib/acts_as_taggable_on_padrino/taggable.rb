@@ -5,7 +5,7 @@ module ActsAsTaggableOn
     end
 
     ##
-    # This is an alias for calling <tt>acts_as_taggable_on :tags</tt>.
+    # This is an alias for calling <tt>acts_as_taggable_on_padrino :tags</tt>.
     #
     # Example:
     #   class Book < ActiveRecord::Base
@@ -22,7 +22,7 @@ module ActsAsTaggableOn
     #
     # Example:
     #   class User < ActiveRecord::Base
-    #     acts_as_taggable_on :languages, :skills
+    #     acts_as_taggable_on_padrino :languages, :skills
     #   end
     def acts_as_taggable_on(*tag_types)
       opts = tag_types.extract_options!

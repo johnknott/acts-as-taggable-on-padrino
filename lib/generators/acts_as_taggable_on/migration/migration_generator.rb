@@ -1,32 +1,22 @@
-require 'rails/generators/migration'
+class TestGenerator < Thor::Group
+  
+  puts ">> loaded #{__FILE__}"
 
-module ActsAsTaggableOn
-  class MigrationGenerator < Rails::Generators::Base
-    include Rails::Generators::Migration
+  # register with Padrino
+  Padrino::Generators.add_generator(:test_generator, self)
+  
+  include Thor::Actions
+  include Padrino::Generators::Actions
+  include Padrino::Generators::Components::Actions
 
-    desc "Generates migration for Tag and Tagging models"
+  desc 'My test generator'
 
-    def self.orm
-      Rails::Generators.options[:rails][:orm]
-    end
+  argument :name, :desc => "The name of your xyz"
 
-    def self.source_root
-      File.join(File.dirname(__FILE__), 'templates', (orm.to_s unless orm.class.eql?(String)) )
-    end
+  require_arguments!
 
-    def self.orm_has_migration?
-      [:active_record].include? orm
-    end
-
-    def self.next_migration_number(path)
-      Time.now.utc.strftime("%Y%m%d%H%M%S")
-    end
-
-    def create_migration_file
-      if self.class.orm_has_migration?
-        migration_template 'migration.rb', 'db/migrate/acts_as_taggable_on_migration'
-      end
-    end
+  def generate_something_useful
+    # provide implementation here...
   end
-end
 
+end

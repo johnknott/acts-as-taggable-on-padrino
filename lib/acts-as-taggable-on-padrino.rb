@@ -3,18 +3,18 @@ require 'active_support/core_ext/class/attribute_accessors'
 
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
-require "acts_as_taggable_on/taggable"
-require "acts_as_taggable_on/taggable/core"
-require "acts_as_taggable_on/taggable/collection"
-require "acts_as_taggable_on/taggable/cache"
-require "acts_as_taggable_on/taggable/ownership"
-require "acts_as_taggable_on/taggable/related"
-require "acts_as_taggable_on/taggable/tag_list"
+require "acts_as_taggable_on_padrino/taggable"
+require "acts_as_taggable_on_padrino/taggable/core"
+require "acts_as_taggable_on_padrino/taggable/collection"
+require "acts_as_taggable_on_padrino/taggable/cache"
+require "acts_as_taggable_on_padrino/taggable/ownership"
+require "acts_as_taggable_on_padrino/taggable/related"
+require "acts_as_taggable_on_padrino/taggable/tag_list"
 
-require "acts_as_taggable_on/tagger"
-require "acts_as_taggable_on/tag"
-require "acts_as_taggable_on/tags_helper"
-require "acts_as_taggable_on/tagging"
+require "acts_as_taggable_on_padrino/tagger"
+require "acts_as_taggable_on_padrino/tag"
+require "acts_as_taggable_on_padrino/tags_helper"
+require "acts_as_taggable_on_padrino/tagging"
 
 $LOAD_PATH.shift
 
