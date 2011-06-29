@@ -1,3 +1,7 @@
+== 2011-06-20
+
+* Converted to Padrino compatible Gem
+
 == 2010-02-17
 * Converted the plugin to be compatible with Rails3
 
