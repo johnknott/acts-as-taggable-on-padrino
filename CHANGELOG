@@ -1,3 +1,7 @@
+== 2011-06-30
+
+* Simplified code, should now work as described in te docs.
+
 == 2011-06-20
 
 * Converted to Padrino compatible Gem

@@ -2,18 +2,18 @@ require File.expand_path('../../spec_helper', __FILE__)
 
 describe ActsAsTaggableOnPadrino::Tag do
   before(:each) do
-    @tag = TestTag.new
+    @tag = ActsAsTaggableOnPadrino::Tag.new
     @user = TaggableModel.create(:name => "Pablo")
   end
 
   describe "named like any" do
     before(:each) do
-      TestTag.create(:name => "awesome")
-      TestTag.create(:name => "epic")
+      ActsAsTaggableOnPadrino::Tag.create(:name => "awesome")
+      ActsAsTaggableOnPadrino::Tag.create(:name => "epic")
     end
 
     it "should find both tags" do
-      TestTag.named_like_any(["awesome", "epic"]).should have(2).items
+      ActsAsTaggableOnPadrino::Tag.named_like_any(["awesome", "epic"]).should have(2).items
     end
   end
 
@@ -24,17 +24,17 @@ describe ActsAsTaggableOnPadrino::Tag do
     end
 
     it "should find by name" do
-      TestTag.find_or_create_with_like_by_name("awesome").should == @tag
+      ActsAsTaggableOnPadrino::Tag.find_or_create_with_like_by_name("awesome").should == @tag
     end
 
     it "should find by name case insensitive" do
-      TestTag.find_or_create_with_like_by_name("AWESOME").should == @tag
+      ActsAsTaggableOnPadrino::Tag.find_or_create_with_like_by_name("AWESOME").should == @tag
     end
 
     it "should create by name" do
       lambda {
-        TestTag.find_or_create_with_like_by_name("epic")
-      }.should change(TestTag, :count).by(1)
+        ActsAsTaggableOnPadrino::Tag.find_or_create_with_like_by_name("epic")
+      }.should change(ActsAsTaggableOnPadrino::Tag, :count).by(1)
     end
   end
 
@@ -45,27 +45,27 @@ describe ActsAsTaggableOnPadrino::Tag do
     end
 
     it "should find by name" do
-      TestTag.find_or_create_all_with_like_by_name("awesome").should == [@tag]
+      ActsAsTaggableOnPadrino::Tag.find_or_create_all_with_like_by_name("awesome").should == [@tag]
     end
 
     it "should find by name case insensitive" do
-      TestTag.find_or_create_all_with_like_by_name("AWESOME").should == [@tag]
+      ActsAsTaggableOnPadrino::Tag.find_or_create_all_with_like_by_name("AWESOME").should == [@tag]
     end
 
     it "should create by name" do
       lambda {
-        TestTag.find_or_create_all_with_like_by_name("epic")
-      }.should change(TestTag, :count).by(1)
+        ActsAsTaggableOnPadrino::Tag.find_or_create_all_with_like_by_name("epic")
+      }.should change(ActsAsTaggableOnPadrino::Tag, :count).by(1)
     end
 
     it "should find or create by name" do
       lambda {
-        TestTag.find_or_create_all_with_like_by_name("awesome", "epic").map(&:name).should == ["awesome", "epic"]
-      }.should change(TestTag, :count).by(1)
+        ActsAsTaggableOnPadrino::Tag.find_or_create_all_with_like_by_name("awesome", "epic").map(&:name).should == ["awesome", "epic"]
+      }.should change(ActsAsTaggableOnPadrino::Tag, :count).by(1)
     end
 
     it "should return an empty array if no tags are specified" do
-      TestTag.find_or_create_all_with_like_by_name([]).should == []
+      ActsAsTaggableOnPadrino::Tag.find_or_create_all_with_like_by_name([]).should == []
     end
   end
 
@@ -81,7 +81,7 @@ describe ActsAsTaggableOnPadrino::Tag do
 
   it "should equal a tag with the same name" do
     @tag.name = "awesome"
-    new_tag = TestTag.new(:name => "awesome")
+    new_tag = ActsAsTaggableOnPadrino::Tag.new(:name => "awesome")
     new_tag.should == @tag
   end
 
@@ -93,13 +93,13 @@ describe ActsAsTaggableOnPadrino::Tag do
   it "have named_scope named(something)" do
     @tag.name = "cool"
     @tag.save!
-    TestTag.named('cool').should include(@tag)
+    ActsAsTaggableOnPadrino::Tag.named('cool').should include(@tag)
   end
 
   it "have named_scope named_like(something)" do
     @tag.name = "cool"
     @tag.save!
-    @another_tag = TestTag.create!(:name => "coolip")
-    TestTag.named_like('cool').should include(@tag, @another_tag)
+    @another_tag = ActsAsTaggableOnPadrino::Tag.create!(:name => "coolip")
+    ActsAsTaggableOnPadrino::Tag.named_like('cool').should include(@tag, @another_tag)
   end
 end

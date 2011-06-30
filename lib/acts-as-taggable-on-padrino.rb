@@ -20,8 +20,6 @@ $LOAD_PATH.shift
 
 ActiveRecord::Base.extend ActsAsTaggableOnPadrino::Taggable
 ActiveRecord::Base.extend ActsAsTaggableOnPadrino::Tagger
-ActiveRecord::Base.extend ActsAsTaggableOnPadrino::Tag
-ActiveRecord::Base.extend ActsAsTaggableOnPadrino::Tagging
 
 if defined?(Padrino::Helpers::TagHelpers)
   Padrino::Helpers::TagHelpers.send :include, ActsAsTaggableOnPadrino::TagsHelper
