@@ -1,8 +1,8 @@
-module ActsAsTaggableOn::Taggable
+module ActsAsTaggableOnPadrino::Taggable
   module Related
     def self.included(base)
-      base.send :include, ActsAsTaggableOn::Taggable::Related::InstanceMethods
-      base.extend ActsAsTaggableOn::Taggable::Related::ClassMethods
+      base.send :include, ActsAsTaggableOnPadrino::Taggable::Related::InstanceMethods
+      base.extend ActsAsTaggableOnPadrino::Taggable::Related::ClassMethods
       base.initialize_acts_as_taggable_on_related
     end
 

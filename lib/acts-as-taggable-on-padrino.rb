@@ -18,16 +18,16 @@ require "acts_as_taggable_on_padrino/tagging"
 
 $LOAD_PATH.shift
 
-ActiveRecord::Base.extend ActsAsTaggableOn::Taggable
-ActiveRecord::Base.extend ActsAsTaggableOn::Tagger
-ActiveRecord::Base.extend ActsAsTaggableOn::Tag
-ActiveRecord::Base.extend ActsAsTaggableOn::Tagging
+ActiveRecord::Base.extend ActsAsTaggableOnPadrino::Taggable
+ActiveRecord::Base.extend ActsAsTaggableOnPadrino::Tagger
+ActiveRecord::Base.extend ActsAsTaggableOnPadrino::Tag
+ActiveRecord::Base.extend ActsAsTaggableOnPadrino::Tagging
 
 if defined?(Padrino::Helpers::TagHelpers)
-  Padrino::Helpers::TagHelpers.send :include, ActsAsTaggableOn::TagsHelper
+  Padrino::Helpers::TagHelpers.send :include, ActsAsTaggableOnPadrino::TagsHelper
 end
 
-module ActsAsTaggableOn
+module ActsAsTaggableOnPadrino
   def like_operator
     @like_operator ||= (ActiveRecord::Base.connection.adapter_name == 'PostgreSQL' ? 'ILIKE' : 'LIKE')
   end

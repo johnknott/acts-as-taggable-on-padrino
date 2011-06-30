@@ -1,4 +1,4 @@
-module ActsAsTaggableOn
+module ActsAsTaggableOnPadrino
   module Taggable
     def taggable?
       false
@@ -52,11 +52,11 @@ module ActsAsTaggableOn
             true
           end
 
-          include ActsAsTaggableOn::Taggable::Core
-          include ActsAsTaggableOn::Taggable::Collection
-          include ActsAsTaggableOn::Taggable::Cache
-          include ActsAsTaggableOn::Taggable::Ownership
-          include ActsAsTaggableOn::Taggable::Related
+          include ActsAsTaggableOnPadrino::Taggable::Core
+          include ActsAsTaggableOnPadrino::Taggable::Collection
+          include ActsAsTaggableOnPadrino::Taggable::Cache
+          include ActsAsTaggableOnPadrino::Taggable::Ownership
+          include ActsAsTaggableOnPadrino::Taggable::Related
         end
       end
     end

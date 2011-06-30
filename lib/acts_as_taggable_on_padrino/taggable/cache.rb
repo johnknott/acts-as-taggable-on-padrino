@@ -1,11 +1,11 @@
-module ActsAsTaggableOn::Taggable
+module ActsAsTaggableOnPadrino::Taggable
   module Cache
     def self.included(base)
       # Skip adding caching capabilities if table not exists or no cache columns exist
       return unless base.table_exists? && base.tag_types.any? { |context| base.column_names.include?("cached_#{context.to_s.singularize}_list") }
 
-      base.send :include, ActsAsTaggableOn::Taggable::Cache::InstanceMethods
-      base.extend ActsAsTaggableOn::Taggable::Cache::ClassMethods
+      base.send :include, ActsAsTaggableOnPadrino::Taggable::Cache::InstanceMethods
+      base.extend ActsAsTaggableOnPadrino::Taggable::Cache::ClassMethods
 
       base.class_eval do
         before_save :save_cached_tag_list

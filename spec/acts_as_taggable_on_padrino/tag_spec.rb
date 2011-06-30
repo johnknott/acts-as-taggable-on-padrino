@@ -1,6 +1,6 @@
 require File.expand_path('../../spec_helper', __FILE__)
 
-describe ActsAsTaggableOn::Tag do
+describe ActsAsTaggableOnPadrino::Tag do
   before(:each) do
     @tag = TestTag.new
     @user = TaggableModel.create(:name => "Pablo")

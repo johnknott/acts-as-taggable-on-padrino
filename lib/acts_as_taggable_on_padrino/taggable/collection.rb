@@ -1,8 +1,8 @@
-module ActsAsTaggableOn::Taggable
+module ActsAsTaggableOnPadrino::Taggable
   module Collection
     def self.included(base)
-      base.send :include, ActsAsTaggableOn::Taggable::Collection::InstanceMethods
-      base.extend ActsAsTaggableOn::Taggable::Collection::ClassMethods
+      base.send :include, ActsAsTaggableOnPadrino::Taggable::Collection::InstanceMethods
+      base.extend ActsAsTaggableOnPadrino::Taggable::Collection::ClassMethods
       base.initialize_acts_as_taggable_on_collection
     end
 

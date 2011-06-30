@@ -1,4 +1,4 @@
-module ActsAsTaggableOn
+module ActsAsTaggableOnPadrino
   module Tag
     def acts_as_tag(opts = {})
       opts.assert_valid_keys :tagging
@@ -16,14 +16,14 @@ module ActsAsTaggableOn
         validates_uniqueness_of :name
 
         ### SCOPES:
-        scope :named, lambda {|name| where(["name #{ActsAsTaggableOn.like_operator} ?", name]) }
-        scope :named_any, lambda {|list| where(list.map { |tag| sanitize_sql(["name #{ActsAsTaggableOn.like_operator} ?", tag.to_s]) }.join(" OR ")) }
-        scope :named_like, lambda {|name| where(["name #{ActsAsTaggableOn.like_operator} ?", "%#{name}%"]) }
-        scope :named_like_any, lambda {|list| where(list.map { |tag| sanitize_sql(["name #{ActsAsTaggableOn.like_operator} ?", "%#{tag.to_s}%"]) }.join(" OR ")) }
+        scope :named, lambda {|name| where(["name #{ActsAsTaggableOnPadrino.like_operator} ?", name]) }
+        scope :named_any, lambda {|list| where(list.map { |tag| sanitize_sql(["name #{ActsAsTaggableOnPadrino.like_operator} ?", tag.to_s]) }.join(" OR ")) }
+        scope :named_like, lambda {|name| where(["name #{ActsAsTaggableOnPadrino.like_operator} ?", "%#{name}%"]) }
+        scope :named_like_any, lambda {|list| where(list.map { |tag| sanitize_sql(["name #{ActsAsTaggableOnPadrino.like_operator} ?", "%#{tag.to_s}%"]) }.join(" OR ")) }
       end
 
-      include ActsAsTaggableOn::Tag::InstanceMethods
-      extend ActsAsTaggableOn::Tag::ClassMethods
+      include ActsAsTaggableOnPadrino::Tag::InstanceMethods
+      extend ActsAsTaggableOnPadrino::Tag::ClassMethods
     end
 
     module ClassMethods

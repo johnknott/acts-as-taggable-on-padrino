@@ -1,4 +1,4 @@
-module ActsAsTaggableOn
+module ActsAsTaggableOnPadrino
   module TagsHelper
     # See the README for an example using tag_cloud.
     def tag_cloud(tags, classes)

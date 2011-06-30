@@ -1,4 +1,4 @@
-module ActsAsTaggableOn
+module ActsAsTaggableOnPadrino
   module Tagging
     def acts_as_tagging(opts = {})
       opts.assert_valid_keys :tag

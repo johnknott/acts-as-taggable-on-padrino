@@ -1,4 +1,4 @@
-module ActsAsTaggableOn
+module ActsAsTaggableOnPadrino
   module Tagger
     ##
     # Make a model a tagger. This allows an instance of a model to claim ownership
@@ -19,8 +19,8 @@ module ActsAsTaggableOn
         has_many :owned_tags, :through => :owned_taggings, :source => :tag, :uniq => true, :class_name => tag_class_name
       end
 
-      include ActsAsTaggableOn::Tagger::InstanceMethods
-      extend ActsAsTaggableOn::Tagger::ClassMethods
+      include ActsAsTaggableOnPadrino::Tagger::InstanceMethods
+      extend ActsAsTaggableOnPadrino::Tagger::ClassMethods
     end
 
     def is_tagger?

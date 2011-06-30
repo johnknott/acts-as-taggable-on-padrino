@@ -1,8 +1,8 @@
-module ActsAsTaggableOn::Taggable
+module ActsAsTaggableOnPadrino::Taggable
   module Core
     def self.included(base)
-      base.send :include, ActsAsTaggableOn::Taggable::Core::InstanceMethods
-      base.extend ActsAsTaggableOn::Taggable::Core::ClassMethods
+      base.send :include, ActsAsTaggableOnPadrino::Taggable::Core::InstanceMethods
+      base.extend ActsAsTaggableOnPadrino::Taggable::Core::ClassMethods
 
       base.class_eval do
         attr_writer :custom_contexts
@@ -70,7 +70,7 @@ module ActsAsTaggableOn::Taggable
       #   User.tagged_with("awesome", "cool", :any => true)       # Users that are tagged with awesome or cool
       #   User.tagged_with("awesome", "cool", :match_all => true) # Users that are tagged with just awesome and cool
       def tagged_with(tags, options = {})
-        tag_list = ActsAsTaggableOn::Taggable::TagList.from(tags)
+        tag_list = ActsAsTaggableOnPadrino::Taggable::TagList.from(tags)
 
         return {} if tag_list.empty?
 
@@ -80,11 +80,11 @@ module ActsAsTaggableOn::Taggable
         context = options.delete(:on)
 
         if options.delete(:exclude)
-          tags_conditions = tag_list.map { |t| sanitize_sql(["#{acts_as_taggable_on_tag_model.table_name}.name #{ActsAsTaggableOn.like_operator} ?", t]) }.join(" OR ")
+          tags_conditions = tag_list.map { |t| sanitize_sql(["#{acts_as_taggable_on_tag_model.table_name}.name #{ActsAsTaggableOnPadrino.like_operator} ?", t]) }.join(" OR ")
           conditions << "#{table_name}.#{primary_key} NOT IN (SELECT #{acts_as_taggable_on_tagging_model.table_name}.taggable_id FROM #{acts_as_taggable_on_tagging_model.table_name} JOIN #{acts_as_taggable_on_tag_model.table_name} ON #{acts_as_taggable_on_tagging_model.table_name}.tag_id = #{acts_as_taggable_on_tag_model.table_name}.id AND (#{tags_conditions}) WHERE #{acts_as_taggable_on_tagging_model.table_name}.taggable_type = #{quote_value(base_class.name)})"
 
         elsif options.delete(:any)
-          tags_conditions = tag_list.map { |t| sanitize_sql(["#{acts_as_taggable_on_tag_model.table_name}.name #{ActsAsTaggableOn.like_operator} ?", t]) }.join(" OR ")
+          tags_conditions = tag_list.map { |t| sanitize_sql(["#{acts_as_taggable_on_tag_model.table_name}.name #{ActsAsTaggableOnPadrino.like_operator} ?", t]) }.join(" OR ")
           conditions << "#{table_name}.#{primary_key} IN (SELECT #{acts_as_taggable_on_tagging_model.table_name}.taggable_id FROM #{acts_as_taggable_on_tagging_model.table_name} JOIN #{acts_as_taggable_on_tag_model.table_name} ON #{acts_as_taggable_on_tagging_model.table_name}.tag_id = #{acts_as_taggable_on_tag_model.table_name}.id AND (#{tags_conditions}) WHERE #{acts_as_taggable_on_tagging_model.table_name}.taggable_type = #{quote_value(base_class.name)})"
 
         else
@@ -160,7 +160,7 @@ module ActsAsTaggableOn::Taggable
 
       def tag_list_cache_on(context)
         variable_name = "@#{context.to_s.singularize}_list"
-        instance_variable_get(variable_name) || instance_variable_set(variable_name, ActsAsTaggableOn::Taggable::TagList.new(tags_on(context).names))
+        instance_variable_get(variable_name) || instance_variable_set(variable_name, ActsAsTaggableOnPadrino::Taggable::TagList.new(tags_on(context).names))
       end
 
       def tag_list_on(context)
@@ -172,7 +172,7 @@ module ActsAsTaggableOn::Taggable
         variable_name = "@all_#{context.to_s.singularize}_list"
         return instance_variable_get(variable_name) if instance_variable_get(variable_name)
 
-        instance_variable_set(variable_name, ActsAsTaggableOn::Taggable::TagList.new(all_tags_on(context).names).freeze)
+        instance_variable_set(variable_name, ActsAsTaggableOnPadrino::Taggable::TagList.new(all_tags_on(context).names).freeze)
       end
 
       ##
@@ -193,7 +193,7 @@ module ActsAsTaggableOn::Taggable
         add_custom_context(context)
 
         variable_name = "@#{context.to_s.singularize}_list"
-        instance_variable_set(variable_name, ActsAsTaggableOn::Taggable::TagList.from(new_list))
+        instance_variable_set(variable_name, ActsAsTaggableOnPadrino::Taggable::TagList.from(new_list))
       end
 
       def tagging_contexts

@@ -1,6 +1,6 @@
 require File.expand_path('../../spec_helper', __FILE__)
 
-describe ActsAsTaggableOn::Tagging do
+describe ActsAsTaggableOnPadrino::Tagging do
   before(:each) do
     @tagging = TestTagging.new
   end
