@@ -28,7 +28,6 @@ module ActsAsTaggableOnPadrino
       tag_types = tag_types.to_a.flatten.compact.map {|type| type.to_sym }
 
       if taggable?
-        # write_inheritable_attribute(:tag_types, (self.tag_types + tag_types).uniq)
         self.tag_types = (self.tag_types + tag_types).uniq
       else
         class_attribute :tag_types
