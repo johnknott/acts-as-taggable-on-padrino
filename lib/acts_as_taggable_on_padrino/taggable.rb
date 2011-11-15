@@ -28,12 +28,14 @@ module ActsAsTaggableOnPadrino
       tag_types = tag_types.to_a.flatten.compact.map {|type| type.to_sym }
 
       if taggable?
-        write_inheritable_attribute(:tag_types, (self.tag_types + tag_types).uniq)
+        self.tag_types = (self.tag_types + tag_types).uniq
       else
-        write_inheritable_attribute(:tag_types, tag_types)
-        write_inheritable_attribute(:tag_table_name, ActsAsTaggableOnPadrino::Tag.table_name)
-        write_inheritable_attribute(:tagging_table_name, ActsAsTaggableOnPadrino::Tagging.table_name)
-        class_inheritable_reader(:tag_types, :tag_table_name, :tagging_table_name)
+        class_attribute :tag_types
+        self.tag_types = tag_types
+        class_attribute :tag_table_name
+        self.tag_table_name = ActsAsTaggableOnPadrino::Tag.table_name
+        class_attribute :tagging_table_name
+        self.tagging_table_name = ActsAsTaggableOnPadrino::Tagging.table_name
 
         Tag.like_operator = 'ILIKE' if Tag.using_postgresql?
 
